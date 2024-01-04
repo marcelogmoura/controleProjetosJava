@@ -1,5 +1,6 @@
 package com.mgmoura.application.controllers;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mgmoura.domain.dtos.ProjetoGetDto;
 import com.mgmoura.domain.dtos.ProjetoPostDto;
 import com.mgmoura.domain.interfaces.ProjetoService;
 
@@ -27,8 +29,8 @@ public class ProjetoController {
 	}
 	
 	@GetMapping
-	public void get() {
-		
+	public List<ProjetoGetDto> get() {
+		return projetoService.consultar();
 	}
 
 }

@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document(collation = "tarefa")
+@Document(collection = "tarefa")
 public class Tarefa {
 
 	@Id
@@ -16,5 +16,6 @@ public class Tarefa {
 	private String descricao;
 	private String status;
 	private String responsavel;
+	private UUID sprintId;
 	
 }

@@ -9,12 +9,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document(collation = "equipe")
+@Document(collection = "equipe")
 public class Equipe {
 	
 	@Id
 	private UUID id;
 	private String nome;
+	private UUID projetoId;
 	private List<MembroEquipe> membros;
 	
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/api/sprint")
-public class Sprint {
+public class SprintController {
 	
 	@PostMapping
 	public void post() {

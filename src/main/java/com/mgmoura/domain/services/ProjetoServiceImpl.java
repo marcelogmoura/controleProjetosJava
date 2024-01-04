@@ -1,11 +1,14 @@
 package com.mgmoura.domain.services;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mgmoura.domain.dtos.ProjetoGetDto;
 import com.mgmoura.domain.dtos.ProjetoPostDto;
 import com.mgmoura.domain.interfaces.ProjetoService;
 import com.mgmoura.domain.models.Projeto;
@@ -33,6 +36,29 @@ public class ProjetoServiceImpl implements ProjetoService {
 			return projeto.getId();
 
 		} catch (Exception e) {
+			throw new IllegalArgumentException(e.getMessage());
+		}
+	}
+
+	@Override
+	public List<ProjetoGetDto> consultar() {
+		try {
+			List<ProjetoGetDto> result = new ArrayList<ProjetoGetDto>();
+			
+			for(Projeto projeto: projetoRepository.findAll()) {
+				
+				ProjetoGetDto dto = new ProjetoGetDto();
+				
+				dto.setId(projeto.getId());
+				dto.setNome(projeto.getNome());
+				dto.setEscopo(projeto.getEscopo());
+				dto.setDataEntrega(new SimpleDateFormat("dd/MM/yyyy").format(projeto.getDataEntrega()));
+				
+				result.add(dto);
+			}
+			return result;
+			
+		}catch(Exception e) {
 			throw new IllegalArgumentException(e.getMessage());
 		}
 	}

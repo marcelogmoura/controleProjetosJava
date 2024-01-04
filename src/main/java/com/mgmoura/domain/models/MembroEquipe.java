@@ -15,5 +15,6 @@ public class MembroEquipe {
 	private UUID id;
 	private String nome;
 	private String papel;
+	private UUID equipeId;
 
 }

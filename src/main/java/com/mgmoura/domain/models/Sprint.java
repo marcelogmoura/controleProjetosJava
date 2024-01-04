@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document(collation = "sprint")
+@Document(collection = "sprint")
 public class Sprint {
 	
 	@Id
@@ -18,6 +18,7 @@ public class Sprint {
 	private String nome;
 	private Date dataInicio;
 	private Date dataFim;
+	private UUID projetoId;
 	private List<Tarefa> tarefas;
 
 }
