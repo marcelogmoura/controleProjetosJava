@@ -12,8 +12,10 @@ import com.mgmoura.domain.dtos.MembroEquipePostDto;
 import com.mgmoura.domain.interfaces.MembroEquipeService;
 import com.mgmoura.domain.models.MembroEquipe;
 import com.mgmoura.infraestructure.repositories.MembroEquipeRepository;
+
 @Service
 public class MembroEquipeServiceImpl implements MembroEquipeService {
+	
 	@Autowired
 	MembroEquipeRepository membroEquipeRepository;
 	
@@ -30,6 +32,7 @@ public class MembroEquipeServiceImpl implements MembroEquipeService {
 		
 		return membroEquipe.getId();
 	}
+	
 	@Override
 	public List<MembroEquipeGetDto> consultar(UUID equipeId) {
 		

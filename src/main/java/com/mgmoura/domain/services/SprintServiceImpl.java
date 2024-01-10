@@ -16,11 +16,13 @@ import com.mgmoura.infraestructure.repositories.SprintRepository;
 
 @Service
 public class SprintServiceImpl implements SprintService {
+	
 	@Autowired
 	SprintRepository sprintRepository;
 
 	@Override
 	public UUID criar(SprintPostDto dto) {
+		
 		try {
 
 			Sprint sprint = new Sprint();
@@ -34,6 +36,7 @@ public class SprintServiceImpl implements SprintService {
 			sprintRepository.save(sprint);
 
 			return sprint.getId();
+			
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e.getMessage());
 		}
@@ -41,13 +44,15 @@ public class SprintServiceImpl implements SprintService {
 
 	@Override
 	public List<SprintGetDto> consultar(UUID projetoId) {
+		
 		try {
-
+			
 			List<SprintGetDto> result = new ArrayList<SprintGetDto>();
 
 			for (Sprint sprint : sprintRepository.findByProjeto(projetoId)) {
 
 				SprintGetDto dto = new SprintGetDto();
+				
 				dto.setId(sprint.getId());
 				dto.setNome(sprint.getNome());
 				dto.setDataInicio(new SimpleDateFormat("dd/MM/yyyy").format(sprint.getDataInicio()));
@@ -58,6 +63,7 @@ public class SprintServiceImpl implements SprintService {
 			}
 
 			return result;
+			
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e.getMessage());
 		}

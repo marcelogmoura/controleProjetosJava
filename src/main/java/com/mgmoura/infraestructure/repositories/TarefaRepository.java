@@ -12,6 +12,6 @@ import com.mgmoura.domain.models.Tarefa;
 @Repository
 public interface TarefaRepository extends MongoRepository<Tarefa, UUID>{
 
-	@Query("{''sprintId' : ?0 }")
+	@Query("{ 'sprintId' : ?0 }")
 	List<Tarefa> findBySprint(UUID sprintId);
 }

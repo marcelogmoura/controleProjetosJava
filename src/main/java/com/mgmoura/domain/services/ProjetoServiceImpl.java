@@ -42,6 +42,7 @@ public class ProjetoServiceImpl implements ProjetoService {
 
 	@Override
 	public List<ProjetoGetDto> consultar() {
+		
 		try {
 			List<ProjetoGetDto> result = new ArrayList<ProjetoGetDto>();
 			

@@ -32,7 +32,6 @@ public class TarefaServiceImpl implements TarefaService {
 		tarefaRepository.save(tarefa);
 
 		return tarefa.getId();
-
 	}
 
 	@Override

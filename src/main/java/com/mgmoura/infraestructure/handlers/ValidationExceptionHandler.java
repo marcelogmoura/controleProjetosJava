@@ -18,19 +18,24 @@ import com.mgmoura.domain.dtos.ErrorResponseDto;
 
 @ControllerAdvice
 public class ValidationExceptionHandler extends ResponseEntityExceptionHandler {
+	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+		
 		List<String> errors = new ArrayList<String>();
+		
 		for (FieldError error : ex.getBindingResult().getFieldErrors()) {
 			errors.add(error.getField() + ": " + error.getDefaultMessage());
 		}
 		for (ObjectError error : ex.getBindingResult().getGlobalErrors()) {
 			errors.add(error.getObjectName() + ": " + error.getDefaultMessage());
 		}
+		
 		ErrorResponseDto response = new ErrorResponseDto();
 		response.setStatus(HttpStatus.BAD_REQUEST);
 		response.setErrors(errors);
+		
 		return handleExceptionInternal(ex, response, headers, response.getStatus(), request);
 	}
 }
